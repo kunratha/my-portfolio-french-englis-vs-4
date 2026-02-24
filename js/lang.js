@@ -42,26 +42,52 @@
     return pathname.replace(/-fr\.html$/i, ".html");
   }
 
-  function setActiveLangButton() {
-    const path = normalizePath(location.pathname);
-    const isFR = isFrenchPage(path);
+  // function setActiveLangButton() {
+  //   const path = normalizePath(location.pathname);
+  //   const isFR = isFrenchPage(path);
 
-    const en = document.querySelector('.lang-link[lang="en"]');
-    const fr = document.querySelector('.lang-link[lang="fr"]');
+  //   const en = document.querySelector('.lang-link[lang="en"]');
+  //   const fr = document.querySelector('.lang-link[lang="fr"]');
+  //   if (!en || !fr) return;
+
+  //   // Treat "/" as EN
+  //   const isRoot = path === "/";
+  //   en.classList.toggle("active", isRoot || !isFR);
+  //   fr.classList.toggle("active", !isRoot && isFR);
+  // }
+
+  function setActiveLangButton() {
+    const path = location.pathname.toLowerCase();
+    const isFR = path.endsWith("-fr.html");
+
+    const en = document.querySelector('.lang-link[data-lang="en"]');
+    const fr = document.querySelector('.lang-link[data-lang="fr"]');
     if (!en || !fr) return;
 
-    // Treat "/" as EN
-    const isRoot = path === "/";
-    en.classList.toggle("active", isRoot || !isFR);
-    fr.classList.toggle("active", !isRoot && isFR);
+    en.classList.remove("active");
+    fr.classList.remove("active");
+
+    if (isFR) fr.classList.add("active");
+    else en.classList.add("active");
   }
+
+  // function bindLangLinks() {
+  //   document.querySelectorAll(".lang-link").forEach((link) => {
+  //     link.addEventListener("click", () => {
+  //       const lang = link.getAttribute("lang");
+  //       if (lang === "en" || lang === "fr") {
+  //         localStorage.setItem(LS_KEY, lang);
+  //       }
+  //     });
+  //   });
+  // }
 
   function bindLangLinks() {
     document.querySelectorAll(".lang-link").forEach((link) => {
       link.addEventListener("click", () => {
-        const lang = link.getAttribute("lang");
+        const lang = link.dataset.lang;
         if (lang === "en" || lang === "fr") {
-          localStorage.setItem(LS_KEY, lang);
+          localStorage.setItem("lang", lang);
         }
       });
     });
