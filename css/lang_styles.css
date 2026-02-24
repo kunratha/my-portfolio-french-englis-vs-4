@@ -1,0 +1,151 @@
+/* Language switch — universal (welcome + portfolio) */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .20);
+  background: rgba(0, 0, 0, .25);
+  backdrop-filter: blur(10px);
+}
+
+.lang-link {
+  font-weight: 900;
+  letter-spacing: .04em;
+  color: rgba(255, 255, 255, .82);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.lang-link:hover {
+  color: #fff;
+}
+
+.lang-link.active {
+  color: #0b1020;
+  background: linear-gradient(90deg, #00f5ff, #ffd84d);
+}
+
+.lang-sep {
+  color: rgba(255, 255, 255, .55);
+}
+
+/* Desktop: keep actions on the right */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .85rem 0;
+}
+
+/* actions always live in the flex row */
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  flex-shrink: 0;
+}
+
+/* Desktop */
+@media (min-width:861px) {
+
+  /* keep hamburger hidden on desktop if you want */
+  .iconbtn--menu {
+    display: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 860px) {
+
+  /* Hide desktop nav */
+  .nav {
+    display: none;
+  }
+
+  /* Show hamburger */
+  .iconbtn--menu {
+    display: inline-flex;
+  }
+
+  /* Keep buttons aligned right */
+
+  /* Smaller logo box */
+  /* Let brand shrink (important!) */
+  .brand {
+    min-width: 0;
+    /* override your 220px */
+    flex: 1 1 auto;
+    /* allow it to shrink */
+    gap: .5rem;
+  }
+
+  /* Prevent brand text from forcing width */
+  .brand__text {
+    min-width: 0;
+  }
+
+  /* Shorten long name visually if needed */
+  .brand__name {
+    font-size: .95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 42vw;
+    /* adjust (35–55vw) */
+  }
+
+  /* Hide subtitle on mobile (recommended) */
+  .brand__role {
+    display: none;
+  }
+
+  /* Smaller logo */
+  .brand__logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 12px;
+    font-size: 14px;
+  }
+
+  .header__inner {
+    padding: 0.7rem 0.8rem;
+  }
+
+  .header__actions {
+    margin-left: auto;
+    gap: 6px;
+  }
+
+  /* 🔹 Make icon buttons smaller */
+  .iconbtn {
+    width: 28px;
+    height: 28px;
+  }
+
+  .iconbtn__icon {
+    font-size: 13px;
+  }
+
+  /* 🔹 Language switch smaller */
+  .lang-switch {
+    padding: 4px 6px;
+    gap: 6px;
+  }
+
+  .lang-link {
+    padding: 4px 6px;
+    font-size: 0.8rem;
+  }
+
+}

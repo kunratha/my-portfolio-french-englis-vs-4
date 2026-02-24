@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="fr" data-lang="fr" data-style="corporate">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KUN RATHA KEAN · Data Analyst / Développeur Django</title>
+  <meta name="description"
+    content="Portfolio de KUN RATHA KEAN — Data Analyst, Machine Learning et Développement Django." />
+  <link rel="stylesheet" href="../css/styles3.css" />
+  <link rel="stylesheet" href="../css/lang_styles.css" />
+</head>
+
+<body>
+  <!-- Scroll progress -->
+  <div class="progress" aria-hidden="true">
+    <div class="progress__bar" id="progressBar"></div>
+  </div>
+
+  <!-- Header / Nav -->
+  <header class="header" id="top">
+    <div class="container header__inner">
+
+      <!-- LEFT: BRAND -->
+      <a class="brand" href="#top" aria-label="Retour en haut">
+        <span class="brand__logo" aria-hidden="true">K</span>
+        <span class="brand__text">
+          <span class="brand__name">KUN RATHA KEAN</span>
+          <span class="brand__role" data-i18n="brand.role">Data · ML · Web · Physique</span>
+        </span>
+      </a>
+
+      <!-- RIGHT: NAV -->
+      <nav class="nav" aria-label="Navigation principale">
+        <a class="nav__link nav__home" href="index.html" data-i18n="nav.home"> ← ACCUEIL </a>
+        <a class="nav__link active" href="#work" data-i18n="nav.work">PROJETS</a>
+        <a class="nav__link" href="#skills" data-i18n="nav.skills">COMPÉTENCES</a>
+        <a class="nav__link" href="#experience" data-i18n="nav.experience">EXPÉRIENCE</a>
+        <a class="nav__link" href="#education" data-i18n="nav.education">FORMATION</a>
+        <a class="nav__link" href="#contact" data-i18n="nav.contact">CONTACT</a>
+      </nav>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile" id="mobileMenu" hidden>
+      <div class="container mobile__inner">
+        <a class="mobile__link" href="#work" data-i18n="nav.work">PROJETS</a>
+        <a class="mobile__link" href="#skills" data-i18n="nav.skills">COMPÉTENCES</a>
+        <a class="mobile__link" href="#experience" data-i18n="nav.experience">EXPÉRIENCE</a>
+        <a class="mobile__link" href="#education" data-i18n="nav.education">FORMATION</a>
+        <a class="mobile__link" href="#contact" data-i18n="nav.contact">CONTACT</a>
+      </div>
+    </div>
+
+    <div class="header__actions">
+      <div class="header__actions">
+        <!-- Language switch: go to FR page -->
+        <div class="lang-switch" role="navigation" aria-label="Language selector">
+          <a class="lang-link active" href="portfolio.html" lang="en">EN</a>
+          <span class="lang-sep" aria-hidden="true">|</span>
+          <a class="lang-link" href="portfolio-fr.html" lang="fr">FR</a>
+        </div>
+
+        <button class="iconbtn iconbtn--menu" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">
+          <span class="iconbtn__icon" aria-hidden="true">☰</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__left">
+          <div class="pill pill--glow" data-i18n="hero.pill">Disponible pour opportunités</div>
+
+          <!-- Corporate FR by default (recruiter-friendly) -->
+          <h1 class="hero__title" data-i18n="hero.title">
+            Je transforme les données en décisions et je développe des applications web fiables.
+          </h1>
+
+          <p class="hero__subtitle" data-i18n="hero.subtitle">
+            <strong>Docteur en physique nucléaire</strong> souhaitant se reconvertir vers la Data et le
+            <strong>Développement Web</strong>.
+            Je possède des connaissances de base en analyse de données, Machine
+            Learning et <strong>développement web</strong> (Python, Django) et je souhaite trouver une
+            <strong>opportunité</strong> dans ce domaine.
+          </p>
+
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#work" data-i18n="hero.ctaProjects">Voir les projets</a>
+            <a class="btn" href="#contact" data-i18n="hero.ctaContact">Me contacter</a>
+
+            <!-- CV: will switch automatically with language -->
+            <a class="btn btn--ghost" href="assets/CV_KUN_RATHA_KEAN_FR.pdf" id="downloadCv" data-i18n="hero.ctaCv">
+              Télécharger le CV
+            </a>
+
+            <!-- Optional: explicit CV links -->
+            <a class="btn btn--ghost btn--sm" href="assets/CV_KUN_RATHA_KEAN_FR.pdf" id="cvFrLink">CV FR</a>
+            <a class="btn btn--ghost btn--sm" href="assets/CV_KUN_RATHA_KEAN_EN.pdf" id="cvEnLink">CV EN</a>
+          </div>
+
+          <div class="hero__meta">
+            <div class="meta">
+              <div class="meta__k" data-i18n="hero.meta.locationK">Localisation</div>
+              <div class="meta__v">Nantes (44), France</div>
+            </div>
+            <div class="meta">
+              <div class="meta__k" data-i18n="hero.meta.stackK">Stack</div>
+              <div class="meta__v">Python · SQL · Django · ML</div>
+            </div>
+            <div class="meta">
+              <div class="meta__k" data-i18n="hero.meta.focusK">Focus</div>
+              <div class="meta__v" data-i18n="hero.meta.focusV">Analyse · Automatisation · Produit</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero__right card">
+          <div class="card__head">
+            <div>
+              <div class="card__kicker" data-i18n="high.kicker">Points clés</div>
+              <div class="card__title" data-i18n="high.title">Ce que j’apporte</div>
+            </div>
+            <span class="badge">2026</span>
+          </div>
+
+          <ul class="bullets">
+            <li data-i18n="high.b1"><strong>Data :</strong> EDA, KPIs, dashboards, storytelling</li>
+            <li data-i18n="high.b2"><strong>ML :</strong> classification/régression, métriques, validation</li>
+            <li data-i18n="high.b3"><strong>Back-End :</strong> Django, auth, SQL, conception & déploiement</li>
+            <li data-i18n="high.b4"><strong>Front-End :</strong> HTML/CSS/JS, responsive UI, UX</li>
+            <li data-i18n="high.b5"><strong>Communication :</strong> enseignement + recherche (rigueur & pédagogie)</li>
+          </ul>
+
+          <div class="divider"></div>
+
+          <div class="mini-grid">
+            <div class="mini">
+              <div class="mini__num">3+</div>
+              <div class="mini__lbl" data-i18n="mini.p">Projets end-to-end</div>
+            </div>
+            <div class="mini">
+              <div class="mini__num">Python</div>
+              <div class="mini__lbl" data-i18n="mini.py">Outil quotidien</div>
+            </div>
+            <div class="mini">
+              <div class="mini__num">Django</div>
+              <div class="mini__lbl" data-i18n="mini.dj">Apps web</div>
+            </div>
+            <div class="mini">
+              <div class="mini__num">SQL</div>
+              <div class="mini__lbl" data-i18n="mini.sql">Analyse</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title" data-i18n="work.title">Projets</h2>
+          <p class="section__desc" data-i18n="work.desc">
+            Filtrer par stack. Cliquez sur un projet pour ouvrir les détails dans une fenêtre.
+          </p>
+        </div>
+
+        <div class="toolbar">
+          <div class="chips" role="tablist" aria-label="Filtres projets">
+            <button class="chip active" data-filter="all" role="tab" aria-selected="true"
+              data-i18n="filters.all">Tous</button>
+            <button class="chip" data-filter="django" role="tab">Django</button>
+            <button class="chip" data-filter="ml" role="tab" data-i18n="filters.ml">Machine Learning</button>
+            <button class="chip" data-filter="streamlit" role="tab">Streamlit</button>
+            <button class="chip" data-filter="data" role="tab" data-i18n="filters.dataviz">DataViz</button>
+          </div>
+
+          <div class="search" role="search">
+            <span class="search__icon" aria-hidden="true">⌕</span>
+            <input id="projectSearch" type="search" placeholder="Rechercher un projet…"
+              data-i18n-placeholder="work.searchPh" />
+            <button class="search__clear" id="clearProjectSearch" type="button" aria-label="Effacer">✕</button>
+          </div>
+        </div>
+
+        <div class="grid" id="projectsGrid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title" data-i18n="skills.title">Compétences</h2>
+          <p class="section__desc" data-i18n="skills.desc">Animées au scroll.</p>
+        </div>
+
+        <div class="grid grid--2">
+          <div class="card pad">
+            <h3 class="h3" data-i18n="skills.tech">Techniques</h3>
+
+            <div class="skill" data-skill="90">
+              <div class="skill__top"><span>Python</span><span class="muted" data-i18n="lvl.adv">Avancé</span></div>
+              <div class="skill__bar">
+                <div class="skill__fill"></div>
+              </div>
+            </div>
+
+            <div class="skill" data-skill="75">
+              <div class="skill__top"><span>Django</span><span class="muted" data-i18n="lvl.strong">Solide</span></div>
+              <div class="skill__bar">
+                <div class="skill__fill"></div>
+              </div>
+            </div>
+
+            <div class="skill" data-skill="80">
+              <div class="skill__top"><span>SQL</span><span class="muted" data-i18n="lvl.strong">Solide</span></div>
+              <div class="skill__bar">
+                <div class="skill__fill"></div>
+              </div>
+            </div>
+
+            <div class="skill" data-skill="78">
+              <div class="skill__top"><span>Machine Learning</span><span class="muted"
+                  data-i18n="lvl.strong">Solide</span></div>
+              <div class="skill__bar">
+                <div class="skill__fill"></div>
+              </div>
+            </div>
+
+            <div class="skill" data-skill="82">
+              <div class="skill__top"><span>Frontend (HTML, CSS, JS)</span><span class="muted"
+                  data-i18n="lvl.strong">Solide</span></div>
+              <div class="skill__bar">
+                <div class="skill__fill"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card pad">
+            <h3 class="h3" data-i18n="skills.recTitle">Ce que les recruteurs attendent</h3>
+            <ul class="list">
+              <li data-i18n="skills.r1"><strong>Impact :</strong> transformer les données en recommandations
+                actionnables</li>
+              <li data-i18n="skills.r2"><strong>Qualité :</strong> code structuré, documenté, maintenable</li>
+              <li data-i18n="skills.r3"><strong>End-to-end :</strong> du dataset à l’app web déployée</li>
+              <li data-i18n="skills.r4"><strong>Rigueur :</strong> démarche scientifique appliquée au produit</li>
+            </ul>
+
+            <div class="divider"></div>
+
+            <div class="callout">
+              <div class="callout__title" data-i18n="future.title">Direction</div>
+              <div class="callout__text" data-i18n="future.text">
+                Construire des systèmes de génération vidéo assistée par IA pour la vulgarisation scientifique :
+                transformer automatiquement des notions complexes (physique, data, ML) en contenus visuels clairs et
+                engageants.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title" data-i18n="exp.title">Expérience</h2>
+          <p class="section__desc" data-i18n="exp.desc">Timeline claire avec résultats et outils.</p>
+        </div>
+
+        <div class="timeline card pad">
+          <div class="tl">
+            <div class="tl__dot"></div>
+            <div class="tl__content">
+              <div class="tl__top">
+                <div>
+                  <div class="tl__role" data-i18n="exp.r1.role">Enseignant de Physique-Chimie (remplacements)</div>
+                  <div class="tl__place muted">Notre-Dame de Tous Aides & LPA de Grand-Blottereau</div>
+                </div>
+                <div class="tl__date badge">2025</div>
+              </div>
+              <ul class="list">
+                <li data-i18n="exp.r1.b1">Enseignement et accompagnement d’élèves (pédagogie, méthode, progression).
+                </li>
+                <li data-i18n="exp.r1.b2">Vulgarisation de concepts complexes en explications structurées.</li>
+                <li data-i18n="exp.r1.b3">Création d’exercices, évaluations et supports.</li>
+                <li data-i18n="exp.r1.b4">Expérience dans un environnement scolaire multiculturel.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tl">
+            <div class="tl__dot"></div>
+            <div class="tl__content">
+              <div class="tl__top">
+                <div>
+                  <div class="tl__role" data-i18n="exp.r2.role">Chercheur Postdoctoral (Physique Nucléaire)</div>
+                  <div class="tl__place muted">SUBATECH · Nantes</div>
+                </div>
+                <div class="tl__date badge">2020–2021</div>
+              </div>
+              <ul class="list">
+                <li data-i18n="exp.r2.b1">Analyse de données à grande échelle, modélisation et reporting scientifique.
+                </li>
+                <li data-i18n="exp.r2.b2">Collaboration internationale (Japon & France) et travail inter-équipes.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tl">
+            <div class="tl__dot"></div>
+            <div class="tl__content">
+              <div class="tl__top">
+                <div>
+                  <div class="tl__role" data-i18n="exp.r3.role">Enseignant (lycée & université)</div>
+                  <div class="tl__place muted" data-i18n="exp.r3.place">Classes bilingues (Khmer–Français)</div>
+                </div>
+                <div class="tl__date badge" data-i18n="exp.r3.date">Plusieurs années</div>
+              </div>
+              <ul class="list">
+                <li data-i18n="exp.r3.b1">Pédagogie, clarté, communication et sens du résultat.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section" id="education">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title" data-i18n="edu.title">Formation</h2>
+        </div>
+
+        <div class="timeline card pad">
+          <div class="tl">
+            <div class="tl__dot"></div>
+            <div class="tl__content">
+              <div class="tl__top">
+                <div>
+                  <div class="tl__role" data-i18n="edu.phd">Doctorat en Physique Nucléaire</div>
+                  <div class="tl__place muted" data-i18n="edu.jp">Japon</div>
+                </div>
+                <div class="tl__date badge">2016 - 2019</div>
+              </div>
+              <ul class="list">
+                <li data-i18n="edu.phd.b1">Expérimentation, analyse de données et modélisation.</li>
+                <li>
+                  <a href="https://journals.aps.org/prc/abstract/10.1103/PhysRevC.100.014611" target="_blank"
+                    rel="noopener" class="btn btn--sm btn--ghost" data-i18n="edu.paper">
+                    📄 Voir la publication
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tl">
+            <div class="tl__dot"></div>
+            <div class="tl__content">
+              <div class="tl__top">
+                <div>
+                  <div class="tl__role" data-i18n="edu.wcs">Formation Data Analyst & Machine Learning</div>
+                  <div class="tl__place muted">Wild Code School · Nantes</div>
+                </div>
+                <div class="tl__date badge">2024</div>
+              </div>
+              <ul class="list">
+                <li data-i18n="edu.wcs.b1">ML appliqué, dataviz, déploiement web.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title" data-i18n="contact.title">Contact</h2>
+          <p class="section__desc" data-i18n="contact.desc">Moyens rapides pour me joindre.</p>
+        </div>
+
+        <div class="grid grid--2">
+          <div class="card pad">
+            <h3 class="h3" data-i18n="contact.msgTitle">Message</h3>
+            <p class="muted" data-i18n="contact.msgDesc">
+              Vous pouvez connecter Formspree, ou brancher un backend plus tard.
+            </p>
+
+            <form class="form" action="https://formspree.io/f/xbldqeaj" method="POST">
+              <label class="field">
+                <span data-i18n="contact.name">Nom</span>
+                <input required name="name" autocomplete="name" placeholder="Votre nom"
+                  data-i18n-placeholder="contact.namePh" />
+              </label>
+
+              <label class="field">
+                <span>Email</span>
+                <input required type="email" name="email" autocomplete="email" placeholder="votre@email.com"
+                  data-i18n-placeholder="contact.emailPh" />
+              </label>
+
+              <label class="field">
+                <span data-i18n="contact.message">Message</span>
+                <textarea required name="message" rows="5" placeholder="Décrivez votre besoin…"
+                  data-i18n-placeholder="contact.msgPh"></textarea>
+              </label>
+
+              <button class="btn btn--primary" type="submit" data-i18n="contact.send">Envoyer</button>
+            </form>
+          </div>
+
+          <div class="card pad">
+            <h3 class="h3" data-i18n="contact.directTitle">Direct</h3>
+
+            <div class="contact-cards">
+              <div class="contact-card">
+                <div class="contact-card__k">Email</div>
+                <div class="contact-card__v">
+                  <span id="emailText">kean.kun.ratha2020@gmail.com</span>
+                </div>
+                <button class="btn btn--sm" id="copyEmail" type="button" data-i18n="contact.copyEmail">Copier
+                  l’email</button>
+              </div>
+
+              <a class="contact-card contact-card--link" href="https://www.linkedin.com/in/kunratha/" target="_blank"
+                rel="noreferrer">
+                <div class="contact-card__k">LinkedIn</div>
+                <div class="contact-card__v">linkedin.com/in/kunratha</div>
+                <div class="muted" data-i18n="contact.open">Ouvrir →</div>
+              </a>
+
+              <a class="contact-card contact-card--link" href="https://github.com/kunratha" target="_blank"
+                rel="noreferrer">
+                <div class="contact-card__k">GitHub</div>
+                <div class="contact-card__v">github.com/kunratha</div>
+                <div class="muted" data-i18n="contact.open">Ouvrir →</div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <div class="footer__left">
+            <span class="muted">© <span id="year"></span> KUN RATHA KEAN </span>
+          </div>
+          <div class="footer__right">
+            <a class="muted" href="#top" data-i18n="footer.top">Retour en haut ↑</a>
+          </div>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <!-- Project Modal -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="document">
+      <div class="modal__head">
+        <div>
+          <div class="badge" id="modalBadge">Project</div>
+          <h3 class="modal__title" id="modalTitle">Title</h3>
+          <div class="muted" id="modalSubtitle">Subtitle</div>
+        </div>
+        <button class="iconbtn" type="button" data-close aria-label="Close modal">✕</button>
+      </div>
+
+      <div class="modal__body" id="modalBody"></div>
+
+      <div class="modal__foot">
+        <a class="btn btn--primary" id="modalLive" href="#" target="_blank" rel="noreferrer">Live Demo</a>
+        <a class="btn" id="modalGit" href="#" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" aria-live="polite" aria-atomic="true" hidden></div>
+
+  <script src="../js/app2.js"></script>
+  <script src="../js/lang.js"></script>
+
+</body>
+
+</html>
