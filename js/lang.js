@@ -1,83 +1,142 @@
-document.addEventListener("DOMContentLoaded", () => {
+/* js/lang.js
+   EN pages:  index.html, portfolio.html, contact.html ...
+   FR pages:  index-fr.html, portfolio-fr.html, contact-fr.html ...
+   No -en.html is ever used.
+*/
 
-  const savedLang = localStorage.getItem("lang");
+(() => {
+  // ----- config -----
+  const LS_KEY = "lang"; // localStorage key
+  const GUARD_KEY = "lang_redirect_guard"; // session guard per tab
 
-  const path = location.pathname.toLowerCase();
+  // ----- helpers -----
+  function getSavedLang() {
+    const v = localStorage.getItem(LS_KEY);
+    return v === "fr" || v === "en" ? v : null;
+  }
 
-  // Detect if page is FR or EN
-  const isFR = path.includes("-fr.html");
-  const isEN = !isFR;
+  function isFileProtocol() {
+    return location.protocol === "file:";
+  }
 
-  // -------- 1️⃣ Auto redirect if needed --------
-  if (savedLang) {
+  function normalizePath(pathname) {
+    // Keep "/" as "/", do NOT convert to "/index.html" to avoid ping-pong
+    return pathname || "/";
+  }
 
-    if (savedLang === "fr" && isEN) {
-      const newPath = path.replace(".html", "-fr.html");
-      location.replace(newPath);
+  function isFrenchPage(pathname) {
+    return pathname.toLowerCase().endsWith("-fr.html");
+  }
+
+  function isHtmlPage(pathname) {
+    return pathname.toLowerCase().endsWith(".html");
+  }
+
+  function toFrench(pathname) {
+    // "/portfolio.html" -> "/portfolio-fr.html"
+    return pathname.replace(/\.html$/i, "-fr.html");
+  }
+
+  function toEnglish(pathname) {
+    // "/portfolio-fr.html" -> "/portfolio.html"
+    return pathname.replace(/-fr\.html$/i, ".html");
+  }
+
+  function setActiveLangButton() {
+    const path = normalizePath(location.pathname);
+    const isFR = isFrenchPage(path);
+
+    const en = document.querySelector('.lang-link[lang="en"]');
+    const fr = document.querySelector('.lang-link[lang="fr"]');
+    if (!en || !fr) return;
+
+    // Treat "/" as EN
+    const isRoot = path === "/";
+    en.classList.toggle("active", isRoot || !isFR);
+    fr.classList.toggle("active", !isRoot && isFR);
+  }
+
+  function bindLangLinks() {
+    document.querySelectorAll(".lang-link").forEach((link) => {
+      link.addEventListener("click", () => {
+        const lang = link.getAttribute("lang");
+        if (lang === "en" || lang === "fr") {
+          localStorage.setItem(LS_KEY, lang);
+        }
+      });
+    });
+  }
+
+  async function existsOnServer(urlPath) {
+    // For http(s) only. On file://, HEAD/fetch often fails or is restricted.
+    if (isFileProtocol()) return false;
+
+    try {
+      const res = await fetch(urlPath, { method: "HEAD", cache: "no-store" });
+      return res.ok;
+    } catch {
+      return false;
+    }
+  }
+
+  async function redirectToSavedLang() {
+    const saved = getSavedLang();
+    if (!saved) return;
+
+    // Redirect at most once per tab session to prevent loops
+    if (sessionStorage.getItem(GUARD_KEY) === "1") return;
+
+    const path = normalizePath(location.pathname);
+    const lower = path.toLowerCase();
+
+    const isRoot = path === "/";
+    const isFR = isFrenchPage(path);
+    const isHTML = isHtmlPage(path);
+
+    // IMPORTANT:
+    // - On "/" we only redirect if we can safely do it (http(s)) and the target exists.
+    // - On file:// we do NOT auto-redirect (prevents "operation is insecure" and loops).
+    if (isRoot) {
+      if (isFileProtocol()) return;
+
+      if (saved === "fr") {
+        const target = "/index-fr.html";
+        if (await existsOnServer(target)) {
+          sessionStorage.setItem(GUARD_KEY, "1");
+          location.replace(target);
+        }
+      }
+      // saved === "en": stay on "/"
       return;
     }
 
-    if (savedLang === "en" && isFR) {
-      const newPath = path.replace("-fr.html", ".html");
-      location.replace(newPath);
-      return;
+    // Only handle real .html pages
+    if (!isHTML) return;
+
+    let target = null;
+
+    if (saved === "fr" && !isFR) {
+      target = toFrench(path);
+    } else if (saved === "en" && isFR) {
+      target = toEnglish(path);
+    }
+
+    if (!target || target === path) return;
+
+    // If on file://, don't auto-redirect (prevents DOMException + loops)
+    if (isFileProtocol()) return;
+
+    // Only redirect if the target file exists
+    if (await existsOnServer(target)) {
+      sessionStorage.setItem(GUARD_KEY, "1");
+      location.replace(target);
     }
   }
 
-  // -------- 2️⃣ Save language when clicking switch --------
-  document.querySelectorAll(".lang-link").forEach(link => {
-    link.addEventListener("click", () => {
-      const lang = link.getAttribute("lang");
-      localStorage.setItem("lang", lang);
-    });
+  // ----- boot -----
+  document.addEventListener("DOMContentLoaded", () => {
+    bindLangLinks();
+    setActiveLangButton();
+    redirectToSavedLang();
   });
-
-});
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  // 1) Mark active language button based on current page
-  setActiveLangButton();
-
-  // 2) Save language when clicking any link
-  document.querySelectorAll(".lang-link").forEach(link => {
-    link.addEventListener("click", () => {
-      localStorage.setItem("lang", link.getAttribute("lang"));
-    });
-  });
-
-  // 3) Redirect to correct version if user opens wrong language page
-  redirectToSavedLang();
-});
-
-function redirectToSavedLang() {
-  const saved = localStorage.getItem("lang");
-  if (!saved) return;
-
-  const path = location.pathname.toLowerCase();
-  const isFR = path.includes("-fr.html");
-  const isEN = !isFR;
-
-  if (saved === "fr" && isEN) {
-    location.replace(path.replace(".html", "-fr.html"));
-    return;
-  }
-
-  if (saved === "en" && isFR) {
-    location.replace(path.replace("-fr.html", ".html"));
-    return;
-  }
-}
-
-function setActiveLangButton() {
-  const path = location.pathname.toLowerCase();
-  const isFR = path.includes("-fr.html");
-
-  const en = document.querySelector('.lang-link[lang="en"]');
-  const fr = document.querySelector('.lang-link[lang="fr"]');
-
-  if (!en || !fr) return;
-
-  en.classList.toggle("active", !isFR);
-  fr.classList.toggle("active", isFR);
-}
+})();
